@@ -9,12 +9,17 @@ import UIKit
 
 class ViewController: UIViewController, TimerServiceDelegate {
     private let countdownView = GiftOfferView()
-    private let timerService = TimerService(initialMilliseconds: 30000)
+    private let timerService = TimerService(initialMilliseconds: 30_000)
+    private let fontSize = 22.0
+    private let viewSize = 168
+    private let animationRotationAngle = 20.0
+    
+    private var shakeAnimationTimer: Timer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        countdownView.frame = CGRect(x: 0, y: 0, width: 168, height: 168)
+        countdownView.frame = CGRect(x: 0, y: 0, width: viewSize, height: viewSize)
         countdownView.center = view.center
         view.addSubview(countdownView)
         
@@ -22,16 +27,22 @@ class ViewController: UIViewController, TimerServiceDelegate {
         
         timerService.delegate = self
         timerService.startTimer()
-        startShakeAnimation()
+        
+        shakeAnimationTimer = Timer.scheduledTimer(
+            timeInterval: 1.5,
+            target: self,
+            selector: #selector(startShakeAnimation),
+            userInfo: nil,
+            repeats: true
+        )
     }
     
     func timerDidUpdate(remainingTime: String) {
-        // Добавляем атрибуты к строке
         let strokeTextAttributes: [NSAttributedString.Key: Any] = [
             .strokeColor: UIColor.black,
             .foregroundColor: UIColor.white,
             .strokeWidth: -1.0,
-            .font: UIFont.monospacedDigitSystemFont(ofSize: 22, weight: .semibold)
+            .font: UIFont.monospacedDigitSystemFont(ofSize: fontSize, weight: .semibold)
         ]
         
         let attributedText = NSAttributedString(string: remainingTime, attributes: strokeTextAttributes)
@@ -39,15 +50,17 @@ class ViewController: UIViewController, TimerServiceDelegate {
     }
     
     func timerDidEnd() {
+        shakeAnimationTimer?.invalidate()
+        shakeAnimationTimer = nil
         countdownView.layer.removeAnimation(forKey: "shakeRotation")
     }
     
-    private func startShakeAnimation() {
+    @objc private func startShakeAnimation() {
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-        rotationAnimation.fromValue = -CGFloat.pi / 20
-        rotationAnimation.toValue = CGFloat.pi / 20
+        rotationAnimation.fromValue = -CGFloat.pi / animationRotationAngle
+        rotationAnimation.toValue = CGFloat.pi / animationRotationAngle
         rotationAnimation.duration = 0.1
-        rotationAnimation.repeatCount = .infinity
+        rotationAnimation.repeatCount = 3
         rotationAnimation.autoreverses = true
         countdownView.giftImageView.layer.add(rotationAnimation, forKey: "shakeRotation")
     }

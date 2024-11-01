@@ -8,8 +8,14 @@
 import UIKit
 
 class GiftOfferView: UIView {
-    private let countdownLabel = UILabel()
     let giftImageView = UIImageView(image: UIImage(named: "GiftImage"))
+    private let countdownLabel = UILabel()
+
+    // Данные отступов и размеров взяты с макетов Figma
+    private let topAnchorConstraint = 11.0
+    private let bottomAnchorConstraint = -29.0
+    private let giftImageWidth = 68.0
+    private let giftImageHeight = 85.0
     
     func configureView() {
         backgroundColor = .darkGray
@@ -29,10 +35,10 @@ class GiftOfferView: UIView {
         addSubview(giftImageView)
         
         NSLayoutConstraint.activate([
-            giftImageView.topAnchor.constraint(equalTo: topAnchor, constant: 11),
+            giftImageView.topAnchor.constraint(equalTo: topAnchor, constant:  topAnchorConstraint),
             giftImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            giftImageView.widthAnchor.constraint(equalToConstant: 68),
-            giftImageView.heightAnchor.constraint(equalToConstant: 85)
+            giftImageView.widthAnchor.constraint(equalToConstant: giftImageWidth),
+            giftImageView.heightAnchor.constraint(equalToConstant: giftImageHeight)
         ])
     }
     
@@ -43,7 +49,7 @@ class GiftOfferView: UIView {
         
         NSLayoutConstraint.activate([
             countdownLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            countdownLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -29)
+            countdownLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: bottomAnchorConstraint)
         ])
     }
 }
