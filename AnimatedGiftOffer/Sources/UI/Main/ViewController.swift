@@ -10,12 +10,12 @@ import UIKit
 class ViewController: UIViewController, TimerServiceDelegate {
     private let countdownView = GiftOfferView()
     private let timerService = TimerService(initialMilliseconds: 30_000)
+    private var shakeAnimationTimer: Timer?
+    private var animator: Animator?
+    
     private let fontSize = 22.0
     private let viewSize = 168
-    private let animationRotationAngle = 20.0
-    
-    private var shakeAnimationTimer: Timer?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,10 +28,12 @@ class ViewController: UIViewController, TimerServiceDelegate {
         timerService.delegate = self
         timerService.startTimer()
         
+        animator = Animator(view: countdownView.giftImageView)
+        
         shakeAnimationTimer = Timer.scheduledTimer(
             timeInterval: 1.5,
             target: self,
-            selector: #selector(startShakeAnimation),
+            selector: #selector(triggerShakeAnimation),
             userInfo: nil,
             repeats: true
         )
@@ -55,13 +57,7 @@ class ViewController: UIViewController, TimerServiceDelegate {
         countdownView.layer.removeAnimation(forKey: "shakeRotation")
     }
     
-    @objc private func startShakeAnimation() {
-        let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
-        rotationAnimation.fromValue = -CGFloat.pi / animationRotationAngle
-        rotationAnimation.toValue = CGFloat.pi / animationRotationAngle
-        rotationAnimation.duration = 0.1
-        rotationAnimation.repeatCount = 3
-        rotationAnimation.autoreverses = true
-        countdownView.giftImageView.layer.add(rotationAnimation, forKey: "shakeRotation")
+    @objc private func triggerShakeAnimation() {
+        animator?.startShakeAnimation() 
     }
 }
