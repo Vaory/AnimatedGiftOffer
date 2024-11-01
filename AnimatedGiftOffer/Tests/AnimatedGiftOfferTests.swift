@@ -8,16 +8,16 @@
 import XCTest
 @testable import AnimatedGiftOffer
 
-class AnimatedGiftOfferTests: XCTestCase, TimerModelDelegate {
+class AnimatedGiftOfferTests: XCTestCase, TimerServiceDelegate {
     
-    var timerModel: TimerModel!
+    var timerModel: TimerService!
     var timerDidUpdateCalled = false
     var timerDidEndCalled = false
     var updatedRemainingTime: String?
     
     override func setUp() {
         super.setUp()
-        timerModel = TimerModel(initialMilliseconds: 100)
+        timerModel = TimerService(initialMilliseconds: 100)
         timerModel.delegate = self
     }
     

@@ -1,5 +1,5 @@
 //
-//  TimerModel.swift
+//  TimerService.swift
 //  AnimatedGiftOffer
 //
 //  Created by Mikhail Demichev on 31.10.2024.
@@ -7,13 +7,13 @@
 
 import Foundation
 
-protocol TimerModelDelegate: AnyObject {
+protocol TimerServiceDelegate: AnyObject {
     func timerDidUpdate(remainingTime: String)
     func timerDidEnd()
 }
 
-class TimerModel {
-    weak var delegate: TimerModelDelegate?
+class TimerService {
+    weak var delegate: TimerServiceDelegate?
     
     private var timer: DispatchSourceTimer?
     var initialMilliseconds: Int

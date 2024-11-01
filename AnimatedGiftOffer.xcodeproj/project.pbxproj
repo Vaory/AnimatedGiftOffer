@@ -10,10 +10,8 @@
 		7409B67E2CD4A85600655EBD /* AnimatedGiftOfferTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7409B67D2CD4A85600655EBD /* AnimatedGiftOfferTests.swift */; };
 		7448CA682CD401580097A190 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448CA672CD401580097A190 /* AppDelegate.swift */; };
 		7448CA6C2CD401580097A190 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448CA6B2CD401580097A190 /* ViewController.swift */; };
-		7448CA6F2CD401580097A190 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7448CA6D2CD401580097A190 /* Main.storyboard */; };
 		7448CA712CD4015A0097A190 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7448CA702CD4015A0097A190 /* Assets.xcassets */; };
-		7448CA742CD4015A0097A190 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7448CA722CD4015A0097A190 /* LaunchScreen.storyboard */; };
-		7448CA7D2CD403130097A190 /* TimerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448CA7C2CD403130097A190 /* TimerModel.swift */; };
+		7448CA7D2CD403130097A190 /* TimerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448CA7C2CD403130097A190 /* TimerService.swift */; };
 		7448CA802CD403B40097A190 /* GiftOfferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448CA7F2CD403B40097A190 /* GiftOfferView.swift */; };
 		7448CA832CD404670097A190 /* Animator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7448CA822CD404670097A190 /* Animator.swift */; };
 /* End PBXBuildFile section */
@@ -34,11 +32,9 @@
 		7448CA642CD401580097A190 /* AnimatedGiftOffer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimatedGiftOffer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7448CA672CD401580097A190 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7448CA6B2CD401580097A190 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		7448CA6E2CD401580097A190 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7448CA702CD4015A0097A190 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		7448CA732CD4015A0097A190 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7448CA752CD4015A0097A190 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7448CA7C2CD403130097A190 /* TimerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerModel.swift; sourceTree = "<group>"; };
+		7448CA7C2CD403130097A190 /* TimerService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerService.swift; sourceTree = "<group>"; };
 		7448CA7F2CD403B40097A190 /* GiftOfferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GiftOfferView.swift; sourceTree = "<group>"; };
 		7448CA822CD404670097A190 /* Animator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,14 +57,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		7409B67C2CD4A85600655EBD /* AnimatedGiftOfferTests */ = {
-			isa = PBXGroup;
-			children = (
-				7409B67D2CD4A85600655EBD /* AnimatedGiftOfferTests.swift */,
-			);
-			path = AnimatedGiftOfferTests;
-			sourceTree = "<group>";
-		};
 		7448CA5B2CD401580097A190 = {
 			isa = PBXGroup;
 			children = (
@@ -89,34 +77,10 @@
 		7448CA662CD401580097A190 /* AnimatedGiftOffer */ = {
 			isa = PBXGroup;
 			children = (
-				7448CA672CD401580097A190 /* AppDelegate.swift */,
-				7448CA7B2CD402C50097A190 /* Model */,
-				7448CA7E2CD403310097A190 /* View */,
-				7448CA842CD404CD0097A190 /* Controller */,
-				7448CA812CD403D50097A190 /* Helpers */,
-				7409B67C2CD4A85600655EBD /* AnimatedGiftOfferTests */,
-				7448CA6D2CD401580097A190 /* Main.storyboard */,
-				7448CA722CD4015A0097A190 /* LaunchScreen.storyboard */,
-				7448CA702CD4015A0097A190 /* Assets.xcassets */,
-				7448CA752CD4015A0097A190 /* Info.plist */,
+				748FA2582CD4F7460006C20B /* Sources */,
+				748FA2592CD4F7760006C20B /* Tests */,
 			);
 			path = AnimatedGiftOffer;
-			sourceTree = "<group>";
-		};
-		7448CA7B2CD402C50097A190 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				7448CA7C2CD403130097A190 /* TimerModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		7448CA7E2CD403310097A190 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				7448CA7F2CD403B40097A190 /* GiftOfferView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		7448CA812CD403D50097A190 /* Helpers */ = {
@@ -127,12 +91,74 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		7448CA842CD404CD0097A190 /* Controller */ = {
+		748FA2532CD4F5540006C20B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				748FA2562CD4F5F80006C20B /* Main */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		748FA2542CD4F56D0006C20B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				7448CA672CD401580097A190 /* AppDelegate.swift */,
+				7448CA752CD4015A0097A190 /* Info.plist */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		748FA2552CD4F5D60006C20B /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				748FA2572CD4F6540006C20B /* Timer */,
+				7448CA7C2CD403130097A190 /* TimerService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		748FA2562CD4F5F80006C20B /* Main */ = {
 			isa = PBXGroup;
 			children = (
 				7448CA6B2CD401580097A190 /* ViewController.swift */,
+				7448CA7F2CD403B40097A190 /* GiftOfferView.swift */,
 			);
-			path = Controller;
+			path = Main;
+			sourceTree = "<group>";
+		};
+		748FA2572CD4F6540006C20B /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
+		748FA2582CD4F7460006C20B /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				748FA2542CD4F56D0006C20B /* App */,
+				748FA2532CD4F5540006C20B /* UI */,
+				748FA2552CD4F5D60006C20B /* Services */,
+				7448CA812CD403D50097A190 /* Helpers */,
+				748FA25A2CD4F7B90006C20B /* Recources */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		748FA2592CD4F7760006C20B /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				7409B67D2CD4A85600655EBD /* AnimatedGiftOfferTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
+		748FA25A2CD4F7B90006C20B /* Recources */ = {
+			isa = PBXGroup;
+			children = (
+				7448CA702CD4015A0097A190 /* Assets.xcassets */,
+			);
+			path = Recources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,9 +249,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7448CA742CD4015A0097A190 /* LaunchScreen.storyboard in Resources */,
 				7448CA712CD4015A0097A190 /* Assets.xcassets in Resources */,
-				7448CA6F2CD401580097A190 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,7 +269,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7448CA832CD404670097A190 /* Animator.swift in Sources */,
-				7448CA7D2CD403130097A190 /* TimerModel.swift in Sources */,
+				7448CA7D2CD403130097A190 /* TimerService.swift in Sources */,
 				7448CA802CD403B40097A190 /* GiftOfferView.swift in Sources */,
 				7448CA6C2CD401580097A190 /* ViewController.swift in Sources */,
 				7448CA682CD401580097A190 /* AppDelegate.swift in Sources */,
@@ -261,25 +285,6 @@
 			targetProxy = 7409B67F2CD4A85600655EBD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		7448CA6D2CD401580097A190 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7448CA6E2CD401580097A190 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		7448CA722CD4015A0097A190 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7448CA732CD4015A0097A190 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		7409B6822CD4A85600655EBD /* Debug */ = {
@@ -441,10 +446,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HN32HK2XMQ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = AnimatedGiftOffer/Info.plist;
+				INFOPLIST_FILE = AnimatedGiftOffer/Sources/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -470,10 +474,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = HN32HK2XMQ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = AnimatedGiftOffer/Info.plist;
+				INFOPLIST_FILE = AnimatedGiftOffer/Sources/App/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
