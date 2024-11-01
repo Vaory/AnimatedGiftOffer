@@ -47,6 +47,7 @@ class TimerService {
         delegate?.timerDidUpdate(remainingTime: timeString)
     }
     
+    // Метод форматироваия времени для корректного отображения, согласно ТЗ
     private func formattedTime(_ milliseconds: Int) -> String {
         let minutes = (milliseconds / 1_000) / 60
         let seconds = (milliseconds / 1_000) % 60

@@ -8,26 +8,27 @@
 import UIKit
 
 class ViewController: UIViewController, TimerServiceDelegate {
-    private let countdownView = GiftOfferView()
+    private let giftOfferView = GiftOfferView()
     private let timerService = TimerService(initialMilliseconds: 30_000)
-    private var shakeAnimationTimer: Timer?
+    private var animationTimer: Timer?
     private var animator: Animator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        countdownView.frame = CGRect(x: 0, y: 0, width: Constants.viewSize, height: Constants.viewSize)
-        countdownView.center = view.center
-        view.addSubview(countdownView)
+        //Здесь можно было бы использовать адаптивную верстку AutoLayout, но сложно попасть в точно заданные размеры макета c Figma. Это единственное место где не использовал адаптивную верстку в проекте, тобы соблюсти ТЗ
+        giftOfferView.frame = CGRect(x: 0, y: 0, width: Constants.viewSize, height: Constants.viewSize)
+        giftOfferView.center = view.center
+        view.addSubview(giftOfferView)
         
-        countdownView.configureView()
+        giftOfferView.configureView()
         
         timerService.delegate = self
         timerService.startTimer()
         
-        animator = Animator(view: countdownView.giftImageView)
+        animator = Animator(view: giftOfferView.giftImageView)
         
-        shakeAnimationTimer = Timer.scheduledTimer(
+        animationTimer = Timer.scheduledTimer(
             timeInterval: Constants.shakeAnimationInterval,
             target: self,
             selector: #selector(triggerShakeAnimation),
@@ -36,6 +37,7 @@ class ViewController: UIViewController, TimerServiceDelegate {
         )
     }
     
+    // Метод которым добился корректного отображения текста, а использование шрифта monospacedDigitSystemFont позволило избежать подергивания таймера из за разного размера цифр
     func timerDidUpdate(remainingTime: String) {
         let strokeTextAttributes: [NSAttributedString.Key: Any] = [
             .strokeColor: UIColor.black,
@@ -45,13 +47,13 @@ class ViewController: UIViewController, TimerServiceDelegate {
         ]
         
         let attributedText = NSAttributedString(string: remainingTime, attributes: strokeTextAttributes)
-        countdownView.updateCountdownLabel(with: attributedText)
+        giftOfferView.updateCountdownLabel(with: attributedText)
     }
     
     func timerDidEnd() {
-        shakeAnimationTimer?.invalidate()
-        shakeAnimationTimer = nil
-        countdownView.layer.removeAnimation(forKey: "shakeRotation")
+        animationTimer?.invalidate()
+        animationTimer = nil
+        giftOfferView.layer.removeAnimation(forKey: "shakeRotation")
     }
     
     @objc private func triggerShakeAnimation() {

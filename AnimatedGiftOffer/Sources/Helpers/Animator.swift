@@ -14,6 +14,7 @@ class Animator {
         self.view = view
     }
     
+    // Анимация "потряхивания" картинки, по заданным параметрам по оси z и использованием autoreverses для плавного возвращения назад
     func startShakeAnimation() {
         let rotationAnimation = CABasicAnimation(keyPath: "transform.rotation.z")
         rotationAnimation.fromValue = -CGFloat.pi / Constants.rotationAngle
