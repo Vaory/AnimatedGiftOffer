@@ -13,13 +13,10 @@ class ViewController: UIViewController, TimerServiceDelegate {
     private var shakeAnimationTimer: Timer?
     private var animator: Animator?
     
-    private let fontSize = 22.0
-    private let viewSize = 168
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        countdownView.frame = CGRect(x: 0, y: 0, width: viewSize, height: viewSize)
+        countdownView.frame = CGRect(x: 0, y: 0, width: Constants.viewSize, height: Constants.viewSize)
         countdownView.center = view.center
         view.addSubview(countdownView)
         
@@ -31,7 +28,7 @@ class ViewController: UIViewController, TimerServiceDelegate {
         animator = Animator(view: countdownView.giftImageView)
         
         shakeAnimationTimer = Timer.scheduledTimer(
-            timeInterval: 1.5,
+            timeInterval: Constants.shakeAnimationInterval,
             target: self,
             selector: #selector(triggerShakeAnimation),
             userInfo: nil,
@@ -43,8 +40,8 @@ class ViewController: UIViewController, TimerServiceDelegate {
         let strokeTextAttributes: [NSAttributedString.Key: Any] = [
             .strokeColor: UIColor.black,
             .foregroundColor: UIColor.white,
-            .strokeWidth: -1.0,
-            .font: UIFont.monospacedDigitSystemFont(ofSize: fontSize, weight: .semibold)
+            .strokeWidth: Constants.strokeWidth,
+            .font: UIFont.monospacedDigitSystemFont(ofSize: Constants.fontSize, weight: .semibold)
         ]
         
         let attributedText = NSAttributedString(string: remainingTime, attributes: strokeTextAttributes)
@@ -58,6 +55,15 @@ class ViewController: UIViewController, TimerServiceDelegate {
     }
     
     @objc private func triggerShakeAnimation() {
-        animator?.startShakeAnimation() 
+        animator?.startShakeAnimation()
+    }
+}
+
+private extension ViewController {
+    struct Constants {
+        static let fontSize = 22.0
+        static let viewSize = 168.0
+        static let shakeAnimationInterval = 1.5
+        static let strokeWidth = -1.0
     }
 }

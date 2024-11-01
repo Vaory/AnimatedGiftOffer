@@ -11,15 +11,9 @@ class GiftOfferView: UIView {
     let giftImageView = UIImageView(image: UIImage(named: "GiftImage"))
     private let countdownLabel = UILabel()
 
-    // Данные отступов и размеров взяты с макетов Figma
-    private let topAnchorConstraint = 11.0
-    private let bottomAnchorConstraint = -29.0
-    private let giftImageWidth = 68.0
-    private let giftImageHeight = 85.0
-    
     func configureView() {
         backgroundColor = .darkGray
-        layer.cornerRadius = 84
+        layer.cornerRadius = Constants.viewCornerRadius
         clipsToBounds = true
         
         setupGiftImageView()
@@ -35,10 +29,10 @@ class GiftOfferView: UIView {
         addSubview(giftImageView)
         
         NSLayoutConstraint.activate([
-            giftImageView.topAnchor.constraint(equalTo: topAnchor, constant:  topAnchorConstraint),
+            giftImageView.topAnchor.constraint(equalTo: topAnchor, constant: Constants.topAnchorConstraint),
             giftImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            giftImageView.widthAnchor.constraint(equalToConstant: giftImageWidth),
-            giftImageView.heightAnchor.constraint(equalToConstant: giftImageHeight)
+            giftImageView.widthAnchor.constraint(equalToConstant: Constants.giftImageWidth),
+            giftImageView.heightAnchor.constraint(equalToConstant: Constants.giftImageHeight)
         ])
     }
     
@@ -49,7 +43,18 @@ class GiftOfferView: UIView {
         
         NSLayoutConstraint.activate([
             countdownLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            countdownLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: bottomAnchorConstraint)
+            countdownLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: Constants.bottomAnchorConstraint)
         ])
+    }
+}
+
+// Данные по размерам и отступам взяты с макета Figma
+private extension GiftOfferView {
+    struct Constants {
+        static let topAnchorConstraint = 11.0
+        static let bottomAnchorConstraint = -29.0
+        static let viewCornerRadius = 84.0
+        static let giftImageWidth = 68.0
+        static let giftImageHeight = 85.0
     }
 }
